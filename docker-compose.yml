@@ -1,0 +1,17 @@
+services:
+  pgvector:
+    image: ankane/pgvector
+    container_name: pgvector
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - pgvector_storage:/var/lib/postgresql/data
+
+volumes:
+  pgvector_storage:
