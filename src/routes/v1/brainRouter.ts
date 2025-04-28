@@ -9,4 +9,4 @@ brainRouter.post("/search", searchContent);
 
 brainRouter.post("/share", shareContent);
 
-brainRouter.get("/:shareLink", otherContents);
+brainRouter.post("/other", otherContents);
