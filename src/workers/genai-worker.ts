@@ -14,7 +14,7 @@ export const useGenAI = async (prompt: string): Promise<string> => {
 
         return response.text ?? "";
     } catch(e) {
-        console.log(`Error while using genai: ${e}`)
+        console.log(`Error while using genai: ${e}`);
         throw new Error("Error using genai");
     }
 }
