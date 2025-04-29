@@ -7,7 +7,7 @@ export const otherContents = async (req: Request, res: Response) => {
 
         const otherUserContent = await prisma.user.findUnique({
             where: {
-                email: otherUserEmail,
+                email: otherUserEmail
             },
             select: {
                 content: {
@@ -26,7 +26,7 @@ export const otherContents = async (req: Request, res: Response) => {
                 }
             }
         });
-        if(!otherUserContent) {
+        if(otherUserContent?.content.length === 0) {
             res.status(404).json({ message: "Invalid user email or the sharing is disabled" });
             return;
         }
