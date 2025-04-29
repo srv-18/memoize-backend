@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import prisma from "./client";
 import { router } from "./routes/v1";
+import { securityMiddleware } from "./middleware/security-middleware";
+import { ratelimitter } from "./middleware/rateLimiter-middleware";
 
 const app = express();
 
@@ -11,6 +13,10 @@ app.use(express.json());
 
 //v1 Routes
 app.use("/api/v1", router);
+
+//security middlewares
+app.use(securityMiddleware);
+app.use(ratelimitter);
 
 
 app.get("/", (_, res) => {
